@@ -1,0 +1,29 @@
+# pthon2
+import matplotlib.pyplot as plt
+
+R=float(input("Enter the value of resistance  : "))
+C=float(input("Enter the value of capacitance : "))
+def f(q):
+  return (-R*C/q)
+Q0=float(input("Q0 = "))
+Qn=float(input("Qn = "))
+t0=0
+n=int(input("Enter the number of steps : "))
+h=(Qn-Q0)/n
+Q=[Q0]
+T=[t0]
+print("Step size =",h)
+for i in range(n):
+  t1=t0+h*f(Q0)
+  Q0=Q0+i*h
+  t0=t1
+  Q.append(Q0)
+  T.append(t0)
+  plt.plot(T,Q)
+plt.grid(True)
+plt.xlabel('X')
+plt.ylabel('Y')
+plt.title('A')
+plt.show()
+
+print("At t =",t0,"Q = 0.5")
